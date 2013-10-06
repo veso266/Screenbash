@@ -4,7 +4,9 @@ FILE="$(date +%s | sha256sum | base64 | head -c 5)"
 # Prompt you to select a region.
 notify-send Screenbash "Select a screenshot region." -t 1000
 # Take the screenshot. Click + drag to select the region.
-scrot -s $HOME/Pictures/Screenshots/$FILE.png
+# You have two choices here. Scrot or Gnome Screenshot. Scrot is buggier, but works on everything. Uncomment as needed.
+# gnome-screenshot -a -f $HOME/Pictures/Screenshots/$FILE.png
+# scrot -s $HOME/Pictures/Screenshots/$FILE.png
 # Make sure the file exists. This allows you to cancel a screenshot.
 if [ -f $HOME/Pictures/Screenshots/$FILE.png ]
 then
