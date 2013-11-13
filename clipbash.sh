@@ -11,5 +11,5 @@ then
     # Copy the link to your clipboard
     echo "http://i.revthefox.co.uk/$FILE" | xsel -i -b
     # Tell you the upload is complete
-    notify-send Clipbash "http://i.revthefox.co.uk/$FILE copied to clipboard." -i $HOME/Pictures/Screenshots/$FILE.png -t 2000
+    notify-send Clipbash "http://i.revthefox.co.uk/$FILE copied to clipboard." -t 2000
 fi
