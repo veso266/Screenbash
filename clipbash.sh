@@ -9,7 +9,7 @@ then
     # Upload the file to a web folder on your server. This is the part where RSA keys are needed.
     rsync $HOME/uploads/text/$FILE.txt user@server.com:/path/to/upload/folder/$FILE.txt
     # Copy the link to your clipboard
-    echo "http://i.revthefox.co.uk/$FILE" | xsel -i -b
+    echo "http://my.domain.com/$FILE" | xsel -i -b
     # Tell you the upload is complete
-    notify-send Clipbash "http://i.revthefox.co.uk/$FILE copied to clipboard." -t 2000
+    notify-send Clipbash "http://my.domain.com/$FILE copied to clipboard." -t 2000
 fi
