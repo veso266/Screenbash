@@ -13,7 +13,7 @@ then
     # Upload the file to a web folder on your server. This is the part where RSA keys are needed.
     rsync $HOME/uploads/screenshots/$FILE.png user@server.com:/path/to/upload/folder/$FILE.png
     # Copy the link to your clipboard.
-    echo "http://your.domain.com/$FILE" | xsel -i -b
+    echo "http://my.domain.com/$FILE" | xsel -i -b
     # Tell you the upload is complete.
-    notify-send Screenbash "http://your.domain.com/$FILE copied to clipboard." -i $HOME/Pictures/Screenshots/$FILE.png -t 1000
+    notify-send Screenbash "http://my.domain.com/$FILE copied to clipboard." -i $HOME/Pictures/Screenshots/$FILE.png -t 1000
 fi
