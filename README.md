@@ -8,4 +8,4 @@ Screenshot/text uploaders for Bash.
 **Usage and Installation**
 _______________________
 
-http://revthefox.co.uk/custom-bash-screenshot-uploader/
+http://revthefox.co.uk/custom-bash-screenshot-uploader
