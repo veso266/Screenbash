@@ -26,5 +26,5 @@ then
     # Copy the link to your clipboard
     echo $FINAL | xsel -i -b
     # Tell you the upload is complete
-    notify-send Screenbash "$FINAL copied to clipboard." -i $HOME/uploads/screenshots/$FILE -t 2000
+    notify-send Screenbash "$FINAL copied to clipboard." -i $LOCALPATH/$FILE -t 2000
 fi
