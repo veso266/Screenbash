@@ -22,7 +22,7 @@ gnome-screenshot -a -f $LOCALPATH/$FILE
 # Make sure the file exists. This allows you to cancel a screenshot.
 if [ -f $LOCALPATH/$FILE ]
 then
-	FINAL=$(curl -F "file=@$LOCALPATH/$FILE" -F "key=$KEY" "$URL/$SCRIPT")
+    FINAL=$(curl -F "file=@$LOCALPATH/$FILE" -F "key=$KEY" "$URL/$SCRIPT")
     # Copy the link to your clipboard
     echo $FINAL | xsel -i -b
     # Tell you the upload is complete
