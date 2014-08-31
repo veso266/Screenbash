@@ -1,6 +1,6 @@
 Screenbash
 ==========
 
-Screenshot/text uploaders for Bash.
+Screenshot uploader for Bash.
 
 @md_5 WISHES he could be on my level.
