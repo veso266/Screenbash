@@ -10,7 +10,7 @@ Works with files other than images with the Zenity tool.
 Requirements
 ============
 
-Zenity
+Zenity (for file selection dialog)
 
 A screenshot tool (gnome-screenshot, scrot, etc...)
 
