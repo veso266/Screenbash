@@ -16,6 +16,8 @@ A screenshot tool capable of running and taking a screenshot from the command li
 
 notify-send for notifications.
 
+xsel for copying links to the clipboard.
+
 A web server running PHP.
 
 Installation

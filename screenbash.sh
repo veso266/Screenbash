@@ -27,7 +27,6 @@ screenshot() {
     # Prompt you to select a region.
     notify-send Screenbash "Select a screenshot region." -t 2000
     # Take the screenshot. Click + drag to select the region.
-    echo "$FILE"
     $SCREENSHOT "$FILE"
     upload_file 
 }
@@ -36,7 +35,6 @@ screenshot() {
 file() {
     # Prompt the user with a Zenity file selection.
     FILE=$(zenity --file-selection --title="Select a file")
-    echo "$FILE"
     upload_file
 }
 
