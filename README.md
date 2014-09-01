@@ -12,7 +12,7 @@ Requirements
 
 Zenity (for file selection dialog, not required for screenshot mode).
 
-A screenshot tool capable of area selections from the command line (gnome-screenshot, scrot, etc...).
+A screenshot tool capable of running and taking a screenshot from the command line (gnome-screenshot, scrot, etc...).
 
 notify-send for notifications.
 
