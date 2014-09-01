@@ -37,3 +37,12 @@ Usage
     ## Prompts you to select a file and then uploads it.
     
     $ screenbash.sh file
+
+Licensing
+=========
+
+The two components of this program fall under two different licenses.
+
+screenbash.sh is licensed under the GPLv3
+
+upload.php is licensed under the WTFPL (http://www.wtfpl.net/) and is written by GunfighterJ (http://gunfighterj.com)
