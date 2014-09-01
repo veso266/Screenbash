@@ -12,7 +12,7 @@ Requirements
 
 Zenity (for file selection dialog)
 
-A screenshot tool (gnome-screenshot, scrot, etc...)
+A screenshot tool capable of area selections from the command line (gnome-screenshot, scrot, etc...)
 
 A web server running PHP.
 
