@@ -71,10 +71,17 @@ if(!isset($_FILES['file']))
     fail();
 }
 
-if (isset($_POST['length']) && is_int($_GET['length']))
+if (isset($_POST['length']))
 {
-    $url_length = $_POST['length'];
-}
+    if (is_int($_POST['length'])
+    {
+        $url_length = $_POST['length'];
+    }
+    else
+    {
+        $url_length = intval($_POST['length']);
+    }
+}i
 
 $file = $_FILES['file'];
 $name = $file['name'];
