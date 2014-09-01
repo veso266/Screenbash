@@ -73,7 +73,7 @@ if(!isset($_FILES['file']))
 
 if (isset($_POST['length']))
 {
-    if (is_int($_POST['length'])
+    if (is_int($_POST['length']))
     {
         $url_length = $_POST['length'];
     }
