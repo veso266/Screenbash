@@ -55,7 +55,7 @@ file() {
 
 upload_file() {
     if [ -n "$FILE" ]; then
-        if [ -f "$FILE"  ]; then
+        if [ -f "$FILE" ]; then
             FINAL=$(curl -F "file=@$FILE" -F "key=$KEY" -F "length=$URLLENGTH" "$URL/$SCRIPT")
             # Copy the link to your clipboard
             echo $FINAL | xsel -i -b
