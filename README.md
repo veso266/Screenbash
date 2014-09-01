@@ -30,6 +30,6 @@ Place screenbash.sh in a folder on your local system. Edit the config values ins
 Usage
 =====
 
-    screenbash.sh screenshot ## Prompts for a screenshot and then uploads it.
+    screenbash.sh screenshot ## Takes a screenshot and then uploads it.
 
     screenbash.sh file ## Prompts you to select a file and then uploads it.
