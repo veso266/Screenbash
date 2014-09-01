@@ -81,7 +81,7 @@ if (isset($_POST['length']))
     {
         $url_length = intval($_POST['length']);
     }
-}i
+}
 
 $file = $_FILES['file'];
 $name = $file['name'];
