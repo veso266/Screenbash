@@ -7,6 +7,8 @@ URL="http://example.com"
 SCRIPT="upload.php"
 # Key for the PHP script. See upload.php
 KEY="secret"
+# Length of file names from generated URLs
+URLLENGTH=5
 
 ## The following only affects screenshots
 # File extension for images
@@ -41,7 +43,7 @@ file() {
 upload_file() {
     if [ -f $FILE ]
     then
-        FINAL=$(curl -F "file=@$FILE" -F "key=$KEY" "$URL/$SCRIPT")
+        FINAL=$(curl -F "file=@$FILE" -F "key=$KEY" -F "length=$URLLENGTH" "$URL/$SCRIPT")
         # Copy the link to your clipboard
         echo $FINAL | xsel -i -b
         # Tell you the upload is complete
