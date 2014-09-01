@@ -10,9 +10,11 @@ Works with files other than images with the Zenity tool.
 Requirements
 ============
 
-Zenity (for file selection dialog)
+Zenity (for file selection dialog, not required for screenshot mode).
 
-A screenshot tool capable of area selections from the command line (gnome-screenshot, scrot, etc...)
+A screenshot tool capable of area selections from the command line (gnome-screenshot, scrot, etc...).
+
+notify-send for notifications.
 
 A web server running PHP.
 
