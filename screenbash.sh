@@ -33,7 +33,7 @@ screenshot() {
     upload_file 
 }
 
-# Uploads other files. Please make sure the file you are uploading is allowed in upload.php
+# Uploads other files.
 file() {
     # Prompt the user with a Zenity file selection.
     FILE=$(zenity --file-selection --title="Select a file")
