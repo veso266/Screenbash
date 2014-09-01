@@ -54,13 +54,14 @@ file() {
 }
 
 upload_file() {
-    if [ -f $FILE ]
-    then
-        FINAL=$(curl -F "file=@$FILE" -F "key=$KEY" -F "length=$URLLENGTH" "$URL/$SCRIPT")
-        # Copy the link to your clipboard
-        echo $FINAL | xsel -i -b
-        # Tell you the upload is complete
-        notify-send Screenbash "$FINAL copied to clipboard." -i "$FILE" -t 2000
+    if [ -n "$FILE" ]; then
+        if [ -f "$FILE"  ]; then
+            FINAL=$(curl -F "file=@$FILE" -F "key=$KEY" -F "length=$URLLENGTH" "$URL/$SCRIPT")
+            # Copy the link to your clipboard
+            echo $FINAL | xsel -i -b
+            # Tell you the upload is complete
+            notify-send Screenbash "$FINAL copied to clipboard." -i "$FILE" -t 2000
+        fi
     fi
 }
 
