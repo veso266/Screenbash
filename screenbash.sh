@@ -28,7 +28,19 @@ URLLENGTH=5
 EXT="png"
 # The command to use for screenshots. The filename will be appended to this.
 # ex. "scrot -s"
-SCREENSHOT="gnome-screenshot -a -f"
+if (which gnome-screenshot &>/dev/null); then
+    SCREENSHOT="gnome-screenshot -a -f"
+    # Generate a random file name.
+    FILE="$LOCALPATH/$(date +%s | sha256sum | head -c 9).$EXT"
+elif (which kbackgroundsnapshot &>/dev/null); then
+    SCREENSHOT="kbackgroundsnapshot --region"
+    FILE="kde"
+else
+    echo "Can't find a suitable screenshot application."
+    echo "Please install gnome-screenshot or ksnapshot."
+    exit 1
+fi
+
 # Path to save screenshots to locally. No trailing /
 # Saves to /tmp by default, which is cleared on reboot.
 # Change this to keep a local copy of the files you upload.
@@ -37,13 +49,21 @@ LOCALPATH="/tmp"
 
 # Takes a screenshot, then uploads it.
 screenshot() {
-    # Generate a random file name.
-    FILE="$LOCALPATH/$(date +%s | sha256sum | head -c 9).$EXT"
     # Prompt you to select a region.
     notify-send Screenbash "Select a screenshot region." -t 2000
-    # Take the screenshot. Click + drag to select the region.
-    $SCREENSHOT "$FILE"
-    upload_file 
+
+    if [[ "$FILE" == "kde" ]]; then
+        # KDE needs to take the screenshot first, and then it gives you a name.
+        if $SCREENSHOT; then
+            # Grab the filename from the Desktop dir.
+            FILE="$(ls --sort=time ~/Desktop/snapshot*.png | head -1)"
+        fi
+    else
+        # Take the screenshot. Click + drag to select the region.
+        $SCREENSHOT "$FILE"
+    fi
+
+    upload_file
 }
 
 # Uploads other files.
@@ -56,12 +76,18 @@ file() {
 upload_file() {
     if [ -n "$FILE" ]; then
         if [ -f "$FILE" ]; then
+            echo "Created: $FILE"
+            return 0
             FINAL=$(curl -F "file=@$FILE" -F "key=$KEY" -F "length=$URLLENGTH" "$URL/$SCRIPT")
             # Copy the link to your clipboard
             echo $FINAL | xsel -i -b
             # Tell you the upload is complete
             notify-send Screenbash "$FINAL copied to clipboard." -i "$FILE" -t 2000
+        else
+            echo "Unable to create the file: $FILE"
         fi
+    else
+        echo "Unable to determine a file name for: ${SCREENSHOT}"
     fi
 }
 
