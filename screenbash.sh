@@ -35,7 +35,12 @@ if (which gnome-screenshot &>/dev/null); then
 elif (which kbackgroundsnapshot &>/dev/null); then
     SCREENSHOT="kbackgroundsnapshot --region"
     FILE="kde"
+else
+    echo "Can't find a suitable screenshot application."
+    echo "Please install gnome-screenshot or ksnapshot."
+    exit 1
 fi
+
 # Path to save screenshots to locally. No trailing /
 # Saves to /tmp by default, which is cleared on reboot.
 # Change this to keep a local copy of the files you upload.
