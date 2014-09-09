@@ -72,7 +72,7 @@ screenshot() {
         # KDE needs to take the screenshot first, and then it gives you a name.
         if $SCREENSHOT; then
             # Grab the filename from the Desktop dir.
-            FILE="$(ls --sort=time ~/Desktop/snapshot*.png | head -1)"
+            FILE="$(ls -d -1 ~/Desktop/snapshot*.png --sort=time | head -1)"
         fi
     else
         # Generate a random filename.
