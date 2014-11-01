@@ -17,11 +17,8 @@
 ## Configuration - modify these ##
 ##################################
 
-# Your upload location. No trailing /
-URL="http://example.com"
-
-# Name of the PHP script on the remote end
-SCRIPT="upload.php"
+# Your upload location.
+URL="http://example.com/upload.php"
 
 # Key for the PHP script. See upload.php
 KEY="secret"
@@ -94,7 +91,7 @@ file() {
 upload_file() {
     if [ -n "$FILE" ]; then
         if [ -f "$FILE" ]; then
-            FINAL=$(curl -F "file=@$FILE" -F "key=$KEY" -F "length=$URLLENGTH" "$URL/$SCRIPT")
+            FINAL=$(curl -F "file=@$FILE" -F "key=$KEY" -F "length=$URLLENGTH" "$URL")
             # Copy the link to your clipboard
             echo $FINAL | xsel -i -b
             # Tell you the upload is complete
