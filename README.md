@@ -18,7 +18,7 @@ notify-send for notifications.
 
 xsel for copying links to the clipboard.
 
-A web server running PHP.
+A web server running PHP. If you don't like PHP, you can probably use a language of your choice, provided you're willing to rewrite the server-side portion of this script.
 
 Installation
 ============
