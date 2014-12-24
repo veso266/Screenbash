@@ -51,6 +51,8 @@ if [[ $SCREENSHOT == "" ]]; then
     elif $(which kbackgroundsnapshot &>/dev/null); then
         SCREENSHOT="kbackgroundsnapshot --region"
         KDE_SCREENSHOT="true"
+    elif $(which import &>/dev/null); then
+        SCREENSHOT="import"
     elif $(which scrot &>/dev/null); then
         SCREENSHOT="scrot -s"
     else
