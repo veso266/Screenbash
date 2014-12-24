@@ -45,13 +45,13 @@ LOCALPATH="/tmp"
 #######################
 
 # Autodetect screenshot program.
-if [ $SCREENSHOT == "" ]; then
-    if (which gnome-screenshot &>/dev/null); then
+if [[ $SCREENSHOT == "" ]]; then
+    if $(which gnome-screenshot &>/dev/null); then
         SCREENSHOT="gnome-screenshot -a -f"
-    elif (which kbackgroundsnapshot &>/dev/null); then
+    elif $(which kbackgroundsnapshot &>/dev/null); then
         SCREENSHOT="kbackgroundsnapshot --region"
-        KDE_SCREENSHOT=true
-    elif (which scrot &>/dev/null); then
+        KDE_SCREENSHOT="true"
+    elif $(which scrot &>/dev/null); then
         SCREENSHOT="scrot -s"
     else
         echo "Can't find a suitable screenshot application."
@@ -65,7 +65,7 @@ screenshot() {
     # Prompt you to select a region.
     notify-send Screenbash "Select a screenshot region." -t 2000
 
-    if $KDE_SCREENSHOT; then
+    if [[ "$KDE_SCREENSHOT" == "true" ]]; then
         # KDE needs to take the screenshot first, and then it gives you a name.
         if $SCREENSHOT; then
             # Grab the filename from the Desktop dir.
@@ -89,8 +89,8 @@ file() {
 }
 
 upload_file() {
-    if [ -n "$FILE" ]; then
-        if [ -f "$FILE" ]; then
+    if [[ -n "$FILE" ]]; then
+        if [[ -f "$FILE" ]]; then
             FINAL=$(curl -F "file=@$FILE" -F "key=$KEY" -F "length=$URLLENGTH" "$URL")
             # Copy the link to your clipboard
             echo $FINAL | xsel -i -b
