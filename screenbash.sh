@@ -96,9 +96,17 @@ upload_file() {
             FINAL=$(curl -F "file=@$FILE" -F "key=$KEY" -F "length=$URLLENGTH" "$URL")
             # Copy the link to your clipboard
             echo $FINAL | xsel -i -b
-            # Tell you the upload is complete
-            notify-send Screenbash "$FINAL copied to clipboard." -i "$FILE" -t 2000
-        fi
+            if $(which convert &>/dev/null); then
+            	# Convert to a thumbnail to prevent certain notification daemons taking over the screen
+            	SMALL_FILE="$FILE.small.$EXT"
+            	convert "$FILE" -resize 128x128\! "$SMALL_FILE"
+            	# Tell you the upload is complete
+            	notify-send Screenbash "$FINAL copied to clipboard." -i "$SMALL_FILE" -t 2000
+            else
+		# Tell you the upload is complete
+		notify-send Screenbash "$FINAL copied to clipboard." -i "$FILE" -t 2000
+	    fi
+	fi
     fi
 }
 

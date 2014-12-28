@@ -10,13 +10,15 @@ Works with files other than images with the Zenity tool.
 Requirements
 ============
 
-Zenity (for file selection dialog, not required for screenshot mode).
+Zenity (Only if you'll be using the file uploader function. Not required to take/upload screenshots.).
 
-A screenshot tool capable of running and taking a screenshot from the command line (gnome-screenshot, scrot, etc...).
+A screenshot tool capable of running and taking a screenshot from the command line (gnome-screenshot, scrot, imagemagick, etc...).
 
-notify-send for notifications.
+libnotify for notifications.
 
 xsel for copying links to the clipboard.
+
+imagemagick IF you want thumbnails in the notification to be resized to a smaller size
 
 A web server running PHP. If you don't like PHP, you can probably use a language of your choice, provided you're willing to rewrite the server-side portion of this script.
 
