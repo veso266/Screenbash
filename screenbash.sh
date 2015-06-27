@@ -107,7 +107,6 @@ upload_file() {
                 # Tell you the upload is complete
                 notify-send Screenbash "$FINAL copied to clipboard." -i "$SMALL_FILE" -t 2000
             else
-                # Tell you the upload is complete
                 notify-send Screenbash "$FINAL copied to clipboard." -i "$FILE" -t 2000
             fi
         fi
@@ -116,16 +115,16 @@ upload_file() {
 
 usage() {
     echo "Usage:"
-    echo "'screenbash.sh screenshot' - Takes and uploads a screenshot"
-    echo "'screenbash.sh file' - Uploads a file - Requires Zenity"
+    echo "$(basename $0) screenshot - Takes and uploads a screenshot"
+    echo "$(basename $0) file [file] - Uploads a file - If no file is specified, requires Zenity"
 }
 
 case $1 in
     screenshot)
         screenshot
         ;;
-    file)
-        file
+    file*)
+        file $2
         ;;
     *)
         usage
