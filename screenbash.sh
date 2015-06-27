@@ -86,7 +86,11 @@ screenshot() {
 # Uploads other files.
 file() {
     # Prompt the user with a Zenity file selection.
-    FILE=$(zenity --file-selection --title="Select a file")
+    if [[ -z $1 ]]; then
+        FILE=$(zenity --file-selection --title="Select a file")
+    else
+        FILE="$1"
+    fi
     upload_file
 }
 
@@ -97,16 +101,16 @@ upload_file() {
             # Copy the link to your clipboard
             echo $FINAL | xsel -i -b
             if $(which convert &>/dev/null); then
-            	# Convert to a thumbnail to prevent certain notification daemons taking over the screen
-            	SMALL_FILE="$FILE.small.$EXT"
-            	convert "$FILE" -resize 128x128\! "$SMALL_FILE"
-            	# Tell you the upload is complete
-            	notify-send Screenbash "$FINAL copied to clipboard." -i "$SMALL_FILE" -t 2000
+                # Convert to a thumbnail to prevent certain notification daemons taking over the screen
+                SMALL_FILE="$FILE.small.$EXT"
+                convert "$FILE" -resize 128x128\! "$SMALL_FILE"
+                # Tell you the upload is complete
+                notify-send Screenbash "$FINAL copied to clipboard." -i "$SMALL_FILE" -t 2000
             else
-		# Tell you the upload is complete
-		notify-send Screenbash "$FINAL copied to clipboard." -i "$FILE" -t 2000
-	    fi
-	fi
+                # Tell you the upload is complete
+                notify-send Screenbash "$FINAL copied to clipboard." -i "$FILE" -t 2000
+            fi
+        fi
     fi
 }
 
